@@ -14,6 +14,7 @@ const Home: NextPage = () => (
       <meta name="description" content="Vorseek" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
+
     <DreiPreview />
 
     <Laptop />
