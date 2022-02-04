@@ -3,6 +3,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from 'assets/styles/Home.module.css';
 import Laptop from 'components/Laptop';
+import dynamic from 'next/dynamic';
+
+const DreiPreview = dynamic(() => import('components/DreiPreview'), { ssr: false });
 
 const Home: NextPage = () => (
   <div className={styles.container}>
@@ -11,6 +14,7 @@ const Home: NextPage = () => (
       <meta name="description" content="Vorseek" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
+    <DreiPreview />
 
     <Laptop />
 
