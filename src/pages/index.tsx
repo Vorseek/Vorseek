@@ -3,9 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from 'assets/styles/Home.module.css';
 import Laptop from 'components/Laptop';
-import dynamic from 'next/dynamic';
-
-const DreiPreview = dynamic(() => import('components/DreiPreview'), { ssr: false });
+import DreiPreview from 'components/DreiPreview';
 
 const Home: NextPage = () => (
   <div className={styles.container}>

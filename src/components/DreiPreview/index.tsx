@@ -1,12 +1,15 @@
 import * as THREE from 'three';
-import { useState, useRef, Suspense, useEffect } from 'react';
+import React from 'react';
 import { Canvas, useThree, useFrame } from '@react-three/fiber';
 import { Reflector, CameraShake, OrbitControls, useTexture, Text } from '@react-three/drei';
 import { KernelSize } from 'postprocessing';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
+import dynamic from 'next/dynamic';
+
+const VideoText = dynamic(() => import('./VideoText'), { ssr: false });
 
 const Rig = ({ children }) => {
-  const ref = useRef<any>(null);
+  const ref = React.useRef<any>(null);
   const vec = new THREE.Vector3();
   const { camera, mouse } = useThree();
   useFrame(() => {
@@ -42,22 +45,24 @@ const Ground = (props) => {
 };
 
 const DreiPreview = () => {
-  const [video] = useState(() =>
-    Object.assign(document.createElement('video'), {
-      src: '/drei.mp4',
-      crossOrigin: 'Anonymous',
-      loop: true,
-      muted: true,
-      autoplay: true,
-      playsinline: true,
-    })
-  );
-  useEffect(() => {
-    video.play();
-  }, [video]);
+  const canvasRef = React.useRef<HTMLCanvasElement>(null);
+  const [fontSizePreview, setFontSizePreview] = React.useState(2);
+
+  React.useEffect(() => {
+    new ResizeObserver(() => {
+      const canvasComponent = canvasRef.current;
+      const canvasWidth = canvasComponent.getClientRects().item(0).width;
+      if (canvasWidth < 600) {
+        setFontSizePreview(0.5);
+      } else {
+        setFontSizePreview(2);
+      }
+    }).observe(canvasRef.current);
+  }, []);
 
   return (
     <Canvas
+      ref={canvasRef}
       dpr={[1, 1.5]}
       camera={{ position: [0, 0, 15] }}
       style={{ height: '100vh', width: '100%' }}
@@ -65,13 +70,11 @@ const DreiPreview = () => {
       <color attach="background" args={['black']} />
       <ambientLight />
       <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
-      <Suspense fallback={null}>
+      <React.Suspense fallback={null}>
         <Rig>
-          <Text fontSize={2} letterSpacing={-0.06}>
+          <Text fontSize={fontSizePreview} letterSpacing={-0.06} color="white">
             Vorseek
-            <meshBasicMaterial toneMapped={false}>
-              <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
-            </meshBasicMaterial>
+            <VideoText />
           </Text>
           <Ground
             mirror={1}
@@ -92,7 +95,7 @@ const DreiPreview = () => {
             intensity={0.5}
           />
         </EffectComposer>
-      </Suspense>
+      </React.Suspense>
       <CameraShake yawFrequency={0.2} pitchFrequency={0.2} rollFrequency={0.2} />
     </Canvas>
   );

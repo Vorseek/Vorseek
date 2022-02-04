@@ -90,7 +90,7 @@ const Laptop = () => {
       style={{
         // background: props.open.to([0, 1], ['#f0f0f0', '#d25578']),
         height: '400px',
-        width: '400px',
+        width: '100%',
         background: 'transparent',
       }}
     >
