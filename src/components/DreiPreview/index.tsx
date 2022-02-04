@@ -48,11 +48,12 @@ const DreiPreview = () => {
       crossOrigin: 'Anonymous',
       loop: true,
       muted: true,
+      autoplay: true,
     })
   );
-  useEffect(() => {
-    video.play();
-  }, [video]);
+  // useEffect(() => {
+  //   video.play();
+  // }, [video]);
 
   return (
     <Canvas dpr={[1, 1.5]} camera={{ position: [0, 0, 15] }} style={{ height: '100vh' }}>
@@ -63,9 +64,9 @@ const DreiPreview = () => {
         <Rig>
           <Text fontSize={2} letterSpacing={-0.06}>
             Vorseek
-            <meshBasicMaterial toneMapped={false}>
+            {/* <meshBasicMaterial toneMapped={false}>
               <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} />
-            </meshBasicMaterial>
+            </meshBasicMaterial> */}
           </Text>
           <Ground
             mirror={1}
