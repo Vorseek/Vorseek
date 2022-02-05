@@ -1,0 +1,21 @@
+.header {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.button {
+  position: absolute;
+  left: 50%;
+  bottom: 10px;
+  transform: translateX(-50%) rotate(180deg);
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.button svg {
+  fill: #fff;
+  transform: rotate(-90deg);
+}

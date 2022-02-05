@@ -3,7 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styles from 'assets/styles/Home.module.css';
 import Laptop from 'components/Laptop';
-import DreiPreview from 'components/DreiPreview';
+import Header from 'components/Header';
 
 const Home: NextPage = () => (
   <div className={styles.container}>
@@ -13,7 +13,7 @@ const Home: NextPage = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
-    <DreiPreview />
+    <Header />
 
     <Laptop />
 

@@ -61,12 +61,7 @@ const DreiPreview = () => {
   }, []);
 
   return (
-    <Canvas
-      ref={canvasRef}
-      dpr={[1, 1.5]}
-      camera={{ position: [0, 0, 15] }}
-      style={{ height: '100vh', width: '100%' }}
-    >
+    <Canvas ref={canvasRef} dpr={[1, 1.5]} camera={{ position: [0, 0, 15] }}>
       <color attach="background" args={['black']} />
       <ambientLight />
       <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
