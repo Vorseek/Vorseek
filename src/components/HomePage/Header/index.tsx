@@ -1,5 +1,5 @@
 import React from 'react';
-import DreiPreview from 'components/DreiPreview';
+import DreiPreview from 'components/HomePage/DreiPreview';
 import styles from './Header.module.css';
 import ArrowIcon from './ArrowIcon';
 

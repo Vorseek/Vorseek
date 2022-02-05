@@ -2,8 +2,6 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from 'assets/styles/Home.module.css';
-import Laptop from 'components/HomePage/Laptop';
-import Header from 'components/HomePage/Header';
 
 const Home: NextPage = () => (
   <div className={styles.container}>
@@ -12,10 +10,6 @@ const Home: NextPage = () => (
       <meta name="description" content="Vorseek" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-
-    <Header />
-
-    <Laptop />
 
     <footer className={styles.footer}>
       <a
