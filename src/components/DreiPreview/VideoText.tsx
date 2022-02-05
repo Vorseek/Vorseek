@@ -10,6 +10,8 @@ const VideoText = () => {
       muted: true,
       autoplay: true,
       playsinline: true,
+      defaultMuted: true,
+      id: 'presentation',
     })
   );
   React.useEffect(() => {
