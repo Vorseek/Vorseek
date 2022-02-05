@@ -51,7 +51,7 @@ const DreiPreview = () => {
   React.useEffect(() => {
     new ResizeObserver(() => {
       const canvasComponent = canvasRef.current;
-      const canvasWidth = canvasComponent.getClientRects().item(0).width;
+      const canvasWidth = canvasComponent?.getClientRects().item(0).width;
       if (canvasWidth < 600) {
         setFontSizePreview(0.5);
       } else {
