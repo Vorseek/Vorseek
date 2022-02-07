@@ -67,12 +67,20 @@ function ArWing() {
     ship.current.position.x = shipPosition.position.x;
   });
 
-  const { nodes } = useLoader(GLTFLoader, 'models/arwing.glb');
+  const { nodes }: any = useLoader(GLTFLoader, 'models/arwing.glb');
+
   return (
     <group ref={ship}>
-      <mesh visible geometry={(nodes.Default as any).geometry}>
-        <meshStandardMaterial attach="material" color="white" roughness={1} metalness={0} />
-      </mesh>
+      {Object.keys(nodes).map((key) => (
+        <mesh
+          key={nodes[key].uuid}
+          scale={0.06}
+          visible
+          rotation-y={Math.PI}
+          geometry={nodes[key].geometry}
+          material={nodes[key].material}
+        />
+      ))}
     </group>
   );
 }
@@ -152,15 +160,25 @@ function LaserController() {
 
 // Draws all of the lasers existing in state.
 function Lasers() {
+  const { nodes }: any = useLoader(GLTFLoader, 'models/Laser.glb');
+
   const lasers = useRecoilValue(laserPositionState);
   return (
     <group>
-      {lasers.map((laser) => (
-        <mesh position={[laser.x, laser.y, laser.z]} key={`${laser.id}`}>
-          <boxBufferGeometry attach="geometry" args={[1, 1, 1]} />
-          <meshStandardMaterial attach="material" emissive="white" wireframe />
-        </mesh>
-      ))}
+      {lasers.map((laser) =>
+        Object.keys(nodes).map((key) => (
+          <mesh
+            position={[laser.x, laser.y, laser.z]}
+            key={nodes[key].uuid}
+            scale={1.5}
+            visible
+            rotation-x={Math.PI * 2}
+            rotation-z={-laser.z}
+            geometry={nodes[key].geometry}
+            material={nodes[key].material}
+          />
+        ))
+      )}
     </group>
   );
 }
@@ -230,7 +248,9 @@ export default function Game() {
         </Suspense>
         <Target />
         <Enemies />
-        <Lasers />
+        <Suspense fallback={null}>
+          <Lasers />
+        </Suspense>
         <LaserController />
         <GameTimer />
       </RecoilRoot>
