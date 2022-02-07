@@ -25,6 +25,10 @@ a {
   height: 100vh;
 }
 
+.simple-scroll-custom .simplebar-track.simplebar-vertical {
+  width: 8px;
+}
+
 @media (max-width: 600px) {
   .simple-scroll-custom {
     height: auto;
