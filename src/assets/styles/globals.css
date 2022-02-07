@@ -16,3 +16,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.simplebar-scrollbar:before {
+  background-color: #fff !important;
+}
