@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from 'assets/styles/Home.module.css';
+import Game from 'components/Game';
 
 const Home: NextPage = () => (
   <div className={styles.container}>
@@ -10,7 +11,7 @@ const Home: NextPage = () => (
       <meta name="description" content="Vorseek" />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-
+    <Game />
     <footer className={styles.footer}>
       <a
         href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
