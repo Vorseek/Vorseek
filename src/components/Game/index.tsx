@@ -30,7 +30,7 @@ function Loading() {
 
 // A Ground plane that moves relative to the player. The player stays at 0,0
 function Terrain() {
-  const terrain = useRef();
+  const terrain = useRef<any>();
 
   useFrame(() => {
     terrain.current.position.z += 0.4;
@@ -51,7 +51,7 @@ function Terrain() {
 
 function ArWing() {
   const [shipPosition, setShipPosition] = useRecoilState(shipPositionState);
-  const ship = useRef();
+  const ship = useRef<any>();
   useFrame(({ mouse }) => {
     setShipPosition({
       position: { x: mouse.x * 6, y: mouse.y * 2 },
@@ -70,7 +70,7 @@ function ArWing() {
   const { nodes } = useLoader(GLTFLoader, 'models/arwing.glb');
   return (
     <group ref={ship}>
-      <mesh visible geometry={nodes.Default.geometry}>
+      <mesh visible geometry={(nodes.Default as any).geometry}>
         <meshStandardMaterial attach="material" color="white" roughness={1} metalness={0} />
       </mesh>
     </group>
@@ -80,8 +80,8 @@ function ArWing() {
 // Draws two sprites in front of the ship indicating the direction of fire.
 // Uses a TextureLoader to load transparent PNG, and sprite to render on a 2d plane facing the camera.
 function Target() {
-  const rearTarget = useRef<React.ReactNode>();
-  const frontTarget = useRef<React.ReactNode>();
+  const rearTarget = useRef<any>();
+  const frontTarget = useRef<any>();
 
   const loader = new TextureLoader();
   // A png with transparency to use as the target sprite.
@@ -218,7 +218,7 @@ function GameTimer() {
   return null;
 }
 
-export default function App() {
+export default function Game() {
   return (
     <Canvas style={{ background: 'black', height: '100vh' }}>
       <RecoilRoot>
