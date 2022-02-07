@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <SimpleBar style={{ maxHeight: '100vh' }}>
+    <SimpleBar className="simple-scroll-custom" style={{ background: 'red' }}>
       <Component {...pageProps} />
     </SimpleBar>
   );
