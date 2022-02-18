@@ -1,13 +1,10 @@
 import React from 'react';
 
-const serverside = ({ context }) => {
-  console.log(context);
-  return (
-    <div>
-      <h1>ServerSide</h1>
-    </div>
-  );
-};
+const serverside = () => (
+  <div>
+    <h1>ServerSide</h1>
+  </div>
+);
 
 export default serverside;
 
