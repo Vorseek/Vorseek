@@ -8,8 +8,8 @@ const serverside = () => (
 
 export default serverside;
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
   return {
-    props: { context }, // will be passed to the page component as props
+    props: {}, // will be passed to the page component as props
   };
 }
