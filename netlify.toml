@@ -1,0 +1,13 @@
+
+[[redirects]]
+  from = "/test"
+  to = "/game"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/static"
+  to = "/static"
+  status = 301
+  force = true
+
