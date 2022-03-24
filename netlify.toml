@@ -16,4 +16,3 @@
   to = "/static"
   query = {amp = ":amp"}
   status = 301
-  force = true
