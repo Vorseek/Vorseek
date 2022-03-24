@@ -5,9 +5,15 @@
   status = 301
   force = true
 
+# [[redirects]]
+#   from = "/static"
+#   to = "/static"
+#   status = 301
+#   force = true
+
 [[redirects]]
   from = "/static"
-  to = "/static"
+  to = "/static/:amp"
+  query = {amp = ":amp"}
   status = 301
   force = true
-
