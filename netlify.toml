@@ -41,3 +41,9 @@
   to = "/static"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/:locale/blog/category/:splat/page/:page"
+  to = "/:locale/blog/category/:splat"
+  status = 301
+  force = true
