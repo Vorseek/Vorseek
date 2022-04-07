@@ -17,18 +17,9 @@
   query = {amp = ":amp"}
   status = 301
 
-[[redirects]]
-  from = "/:locale/blog/category/:splat/:page/:pag"
-  to = "/:locale/blog/category/:splat"
-  status = 301
-  force = true
 
 
-[[redirects]]
-  from = "/blog/category/:splat/page/:page"
-  to = "/blog/category/:splat"
-  status = 301
-  force = true
+
 
 [[redirects]]
   from = "/static"
