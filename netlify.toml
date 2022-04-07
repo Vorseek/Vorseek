@@ -23,8 +23,21 @@
   status = 301
   force = true
 
+
 [[redirects]]
-  from = "/blog/category/:splat/:page/:pag"
+  from = "/blog/category/:splat/page/:page"
   to = "/blog/category/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/static"
+  to = "/blog/category/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/test"
+  to = "/static"
   status = 301
   force = true
