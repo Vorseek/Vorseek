@@ -10,7 +10,14 @@ const StaticProps = ({ res }) => (
 export async function getStaticProps() {
   const res = await new Promise((resolve) => {
     setTimeout(() => {
-      resolve(new Date().getSeconds());
+      resolve(
+        `Build
+          date:${new Date().getDate()} 
+          hours: ${new Date().getHours()} 
+          minutes: ${new Date().getMinutes()} 
+          seconds: ${new Date().getSeconds()}
+          `
+      );
     }, 3000);
   });
 
