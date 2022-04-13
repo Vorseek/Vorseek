@@ -22,13 +22,13 @@ export async function getStaticProps() {
     }, 3000);
   });
 
-  const arr = new Array(2).fill(null);
+  const arr = new Array(1).fill(null);
 
   const result = [] as Promise<AxiosResponse<any, any>>[];
 
   arr.forEach(async () => {
     const image = axios.get(
-      'https://images.pexels.com/photos/5998117/pexels-photo-5998117.jpeg?cs=srgb&dl=pexels-max-vakhtbovych-5998117.jpg&fm=jpg'
+      'https://images.pexels.com/photos/11254131/pexels-photo-11254131.jpeg?cs=srgb&dl=pexels-summer-rune-11254131.jpg&fm=jpg&w=1920&h=2868'
     );
 
     result.push(image);
