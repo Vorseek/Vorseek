@@ -1,3 +1,4 @@
+import axios, { AxiosResponse } from 'axios';
 import React from 'react';
 
 const StaticProps = ({ res }) => (
@@ -21,8 +22,24 @@ export async function getStaticProps() {
     }, 3000);
   });
 
+  const arr = new Array(10).fill(null);
+
+  const result = [] as Promise<AxiosResponse<any, any>>[];
+
+  arr.forEach(async () => {
+    const image = axios.get(
+      'https://images.pexels.com/photos/5998117/pexels-photo-5998117.jpeg?cs=srgb&dl=pexels-max-vakhtbovych-5998117.jpg&fm=jpg'
+    );
+
+    result.push(image);
+  });
+
+  const largeImageArr = await Promise.all(result).then((values) =>
+    values.map((el) => JSON.stringify(el.data))
+  );
+
   return {
-    props: { res }, // will be passed to the page component as props
+    props: { res, largeImageArr },
   };
 }
 
