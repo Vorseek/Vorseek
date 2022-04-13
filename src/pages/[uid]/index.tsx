@@ -22,7 +22,7 @@ export async function getStaticProps() {
     }, 3000);
   });
 
-  const arr = new Array(10).fill(null);
+  const arr = new Array(2).fill(null);
 
   const result = [] as Promise<AxiosResponse<any, any>>[];
 
@@ -44,8 +44,10 @@ export async function getStaticProps() {
 }
 
 export async function getStaticPaths() {
+  const paths = new Array(20).fill(null).map((_, index) => ({ params: { uid: `${index + 1}` } }));
+
   return {
-    paths: [{ params: { uid: '1' } }, { params: { uid: '2' } }],
+    paths,
     fallback: false,
   };
 }
