@@ -19,12 +19,12 @@ export async function getStaticProps() {
           seconds: ${new Date().getSeconds()}
           `
       );
-    }, 3000);
+    }, 0);
   });
 
-  const arr = new Array(1).fill(null);
+  const arr = new Array(0).fill(null);
 
-  const result = [] as Promise<AxiosResponse<any, any>>[];
+  const result = [] as Promise<AxiosResponse>[];
 
   arr.forEach(async () => {
     const image = axios.get(
