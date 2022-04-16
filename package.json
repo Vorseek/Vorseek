@@ -28,6 +28,7 @@
     "three": "0.135.0"
   },
   "devDependencies": {
+    "@netlify/plugin-sitemap": "^0.8.1",
     "@types/node": "^17.0.14",
     "@types/react": "^17.0.39",
     "@types/three": "^0.137.0",

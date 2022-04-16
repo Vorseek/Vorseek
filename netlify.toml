@@ -1,3 +1,6 @@
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+
 
 [[redirects]]
   from = "/test"
