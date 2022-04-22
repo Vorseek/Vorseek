@@ -19,10 +19,10 @@ export async function getStaticProps() {
           seconds: ${new Date().getSeconds()}
           `
       );
-    }, 0);
+    }, 3000);
   });
 
-  const arr = new Array(0).fill(null);
+  const arr = new Array(1).fill(null);
 
   const result = [] as Promise<AxiosResponse>[];
 
