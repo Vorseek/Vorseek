@@ -12,9 +12,15 @@ const StaticProps: NextPage<Props> = (props) => {
 
   return (
     <div>
-      <p>{`Static build ${res}`}</p>
+      <p>Static build</p>
+      {res.split('\n').map((text) => (
+        <p key={text}>{text}</p>
+      ))}
       <h1>static</h1>
-      <p>{`InitialProps ${timeInitialProps}`}</p>
+      <p>InitialProps</p>
+      {timeInitialProps.split('\n').map((text) => (
+        <p key={text}>{text}</p>
+      ))}
     </div>
   );
 };
@@ -23,11 +29,10 @@ export async function getStaticProps() {
   const res = await new Promise((resolve) => {
     setTimeout(() => {
       resolve(
-        `Build
+        `StaticProps build
           date: ${new Date().getDate()}
-          hours: ${new Date().getHours()} 
+          hours: ${new Date().getHours()}
           minutes: ${new Date().getMinutes()} 
-          seconds: ${new Date().getSeconds()}
           `
       );
     }, 3000);
