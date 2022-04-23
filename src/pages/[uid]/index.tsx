@@ -1,19 +1,30 @@
 import axios, { AxiosResponse } from 'axios';
+import { NextPage } from 'next';
 import React from 'react';
 
-const StaticProps = ({ res }) => (
-  <div>
-    {res}
-    <h1>static</h1>
-  </div>
-);
+interface Props {
+  res: string;
+  timeInitialProps: string;
+}
+
+const StaticProps: NextPage<Props> = (props) => {
+  const { res, timeInitialProps } = props;
+
+  return (
+    <div>
+      <p>{`Static build ${res}`}</p>
+      <h1>static</h1>
+      <p>{`InitialProps ${timeInitialProps}`}</p>
+    </div>
+  );
+};
 
 export async function getStaticProps() {
   const res = await new Promise((resolve) => {
     setTimeout(() => {
       resolve(
         `Build
-          date:${new Date().getDate()} 
+          date: ${new Date().getDate()}
           hours: ${new Date().getHours()} 
           minutes: ${new Date().getMinutes()} 
           seconds: ${new Date().getSeconds()}
