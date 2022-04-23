@@ -18,7 +18,7 @@ const StaticProps: NextPage<Props> = (props) => {
       ))}
       <h1>static</h1>
       <p>InitialProps</p>
-      {timeInitialProps.split('\n').map((text) => (
+      {timeInitialProps?.split('\n').map((text) => (
         <p key={text}>{text}</p>
       ))}
     </div>

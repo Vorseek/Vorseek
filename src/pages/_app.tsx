@@ -12,7 +12,7 @@ const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => (
   <SimpleBar className="simple-scroll-custom">
     <Component {...pageProps} stars={stars} timeInitialProps={timeInitialProps} />
     <h1>
-      {timeInitialProps.split('\n').map((text) => (
+      {timeInitialProps?.split('\n').map((text) => (
         <p key={text}>{text}</p>
       ))}
     </h1>
