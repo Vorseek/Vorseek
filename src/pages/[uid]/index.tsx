@@ -13,7 +13,7 @@ const StaticProps: NextPage<Props> = (props) => {
   return (
     <div>
       <p>Static build</p>
-      {res.split('\n').map((text) => (
+      {res?.split('\n').map((text) => (
         <p key={text}>{text}</p>
       ))}
       <h1>static</h1>
