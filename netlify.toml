@@ -8,33 +8,6 @@
   status = 301
   force = true
 
-# [[redirects]]
-#   from = "/static"
-#   to = "/static"
-#   status = 301
-#   force = true
-
-[[redirects]]
-  from = "/static"
-  to = "/static"
-  query = {amp = ":amp"}
-  status = 301
-
-
-
-
-
-[[redirects]]
-  from = "/static"
-  to = "/blog/category/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/test"
-  to = "/static"
-  status = 301
-  force = true
 
 [[redirects]]
   from = "/:locale/blog/category/:splat/page/:page"
