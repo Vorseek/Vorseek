@@ -25,5 +25,5 @@
 [[redirects]]
   from = "/10/*"
   to = "/10/test/:value"
-  status = 200
+  status = 301
   force = true
