@@ -25,5 +25,5 @@
 [[redirects]]
   from = "/10/*"
   to = "/10"
-  status = 301
+  status = 200
   force = true
