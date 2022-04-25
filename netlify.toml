@@ -24,6 +24,6 @@
 
 [[redirects]]
   from = "/10/*"
-  to = "/123"
+  to = "/123/:splat"
   status = 301
   force = true
