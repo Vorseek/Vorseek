@@ -50,12 +50,8 @@ export async function getStaticProps() {
     result.push(image);
   });
 
-  const largeImageArr = await Promise.all(result).then((values) =>
-    values.map((el) => JSON.stringify(el.data))
-  );
-
   return {
-    props: { res, largeImageArr },
+    props: { res },
   };
 }
 
