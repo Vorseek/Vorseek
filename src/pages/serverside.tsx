@@ -1,4 +1,5 @@
 import React from 'react';
+import type { GetServerSideProps } from 'next';
 
 const serverside = () => (
   <div>
@@ -8,8 +9,10 @@ const serverside = () => (
 
 export default serverside;
 
-export async function getServerSideProps() {
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=59');
+
   return {
     props: {}, // will be passed to the page component as props
   };
-}
+};
