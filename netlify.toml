@@ -2,8 +2,8 @@
   package = "@netlify/plugin-sitemap"
 
 [[edge_functions]]
-  path = "/:locale/blog"
-  function = "test"
+  path = "/fr/blog"
+  function = "rewrite"
 
 
 # [[redirects]]
