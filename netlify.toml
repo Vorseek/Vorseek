@@ -32,19 +32,13 @@
   force = true
 
 [[redirects]]
-  from = "/blog"
-  to = "/"
+  from = "/:locale/blog/*"
+  to = "/blog/:locale/:splat"
   status = 200
   force = true
 
 [[redirects]]
-  from = "/blog/*"
-  to = "/:file"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/blog/netlify-images/*"
-  to = "/netlify-images/:file"
+  from = "/:locale/blog"
+  to = "/blog/:locale"
   status = 200
   force = true
