@@ -5,40 +5,40 @@
   BASE_PATH = "/academy"
 
 
-[[redirects]]
-  from = "/test"
-  to = "/game"
-  status = 301
-  force = true
+# [[redirects]]
+#   from = "/test"
+#   to = "/game"
+#   status = 301
+#   force = true
 
 
-[[redirects]]
-  from = "/:locale/blog/category/:splat/page/:page"
-  to = "/:locale/blog/category/:splat"
-  status = 301
-  force = true
+# [[redirects]]
+#   from = "/:locale/blog/category/:splat/page/:page"
+#   to = "/:locale/blog/category/:splat"
+#   status = 301
+#   force = true
 
-[[redirects]]
-  from = "/static"
-  to = "/static"
-  status = 200
-  force = true
+# [[redirects]]
+#   from = "/static"
+#   to = "/static"
+#   status = 200
+#   force = true
 
 
-[[redirects]]
-  from = "/10/*"
-  to = "/123/:splat"
-  status = 301
-  force = true
+# [[redirects]]
+#   from = "/10/*"
+#   to = "/123/:splat"
+#   status = 301
+#   force = true
 
 [[redirects]]
   from = "/:locale/blog/*"
   to = "/blog/:locale/:splat"
-  status = 200
+  status = 301
   force = true
 
 [[redirects]]
   from = "/:locale/blog"
   to = "/blog/:locale"
-  status = 200
+  status = 301
   force = true
