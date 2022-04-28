@@ -31,9 +31,20 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/blog"
+  to = "/"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/blog/*"
-  to = "/:splat"
+  to = "/:file"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog/netlify-images/*"
+  to = "/netlify-images/:file"
   status = 200
   force = true
