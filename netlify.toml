@@ -1,6 +1,10 @@
 [[plugins]]
   package = "@netlify/plugin-sitemap"
 
+[[edge_functions]]
+  path = "/test"
+  function = "test"
+
 
 # [[redirects]]
 #   from = "/test"
