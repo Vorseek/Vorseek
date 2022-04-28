@@ -1,1 +1,4 @@
-export default async (request: Request, context: any) => context.rewrite('/serverside');
+export default async (request: Request, context: any) => {
+  const { url } = request;
+  return context.rewrite('/serverside');
+};

@@ -16,7 +16,7 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   const min = await new Promise((resolve) => {
     setTimeout(() => {
       resolve(new Date().getMinutes());
-    }, 5000);
+    }, 1000);
   });
 
   return {

@@ -2,7 +2,7 @@
   package = "@netlify/plugin-sitemap"
 
 [[edge_functions]]
-  path = "/*"
+  path = "/:locale/blog"
   function = "test"
 
 
