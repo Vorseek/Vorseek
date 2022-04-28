@@ -6,18 +6,18 @@ const nextConfig = {
     locales: ['en', 'fr', 'nl'],
     defaultLocale: 'en',
   },
-  async rewrites() {
-    return [
-      {
-        source: '/:locale/blog/:path*',
-        destination: '/:locale/:path*',
-      },
-      {
-        source: '/blog/:path*',
-        destination: '/:path*',
-      },
-    ];
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: '/:locale/blog/:path*',
+  //       destination: '/:locale/:path*',
+  //     },
+  //     {
+  //       source: '/blog/:path*',
+  //       destination: '/:path*',
+  //     },
+  //   ];
+  // },
 };
 
 module.exports = nextConfig;

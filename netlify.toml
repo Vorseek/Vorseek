@@ -31,11 +31,19 @@
 #   status = 301
 #   force = true
 
-# [[redirects]]
-#   from = "/:locale/blog/*"
-#   to = "/blog/:locale/:splat"
-#   status = 301
-#   force = true
+[[redirects]]
+  from = "/blog/*"
+  to = "/:splat"
+  status = 200
+  force = true
+
+
+[[redirects]]
+  from = "/academy/*"
+  to = "/:page"
+  status = 200
+  force = true
+
 
 # [[redirects]]
 #   from = "/:locale/blog"
