@@ -60,3 +60,8 @@
 #   status = 200
 #   force = true
 
+# The URL for each edge function
+# [[edge_functions]]
+#   function = "transform"
+#   path = "/*"
+  
