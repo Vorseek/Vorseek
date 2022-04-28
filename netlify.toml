@@ -1,9 +1,6 @@
 [[plugins]]
   package = "@netlify/plugin-sitemap"
 
-[context.production.environment]
-  BASE_PATH = "/academy"
-
 
 # [[redirects]]
 #   from = "/test"
