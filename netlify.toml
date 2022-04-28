@@ -31,14 +31,14 @@
 #   status = 301
 #   force = true
 
-[[redirects]]
-  from = "/:locale/blog/*"
-  to = "/blog/:locale/:splat"
-  status = 301
-  force = true
+# [[redirects]]
+#   from = "/:locale/blog/*"
+#   to = "/blog/:locale/:splat"
+#   status = 301
+#   force = true
 
 [[redirects]]
   from = "/:locale/blog"
   to = "/blog/:locale"
-  status = 301
+  status = 200
   force = true
