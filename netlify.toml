@@ -34,13 +34,13 @@
 [[redirects]]
   from = "/:locale/blog/:splat"
   to = "/blog/:locale/:splat"
-  status = 200
+  status = 301
   force = true
 
 [[redirects]]
   from = "/:locale/blog"
   to = "/blog/:locale"
-  status = 200
+  status = 301
   force = true
 
 # [[redirects]]
