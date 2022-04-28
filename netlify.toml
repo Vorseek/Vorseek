@@ -32,17 +32,29 @@
 #   force = true
 
 [[redirects]]
-  from = ":locale/blog/*"
-  to = ":locale/:splat"
+  from = "/:locale/blog/:splat"
+  to = "/blog/:locale/:splat"
   status = 200
   force = true
-
 
 [[redirects]]
-  from = "/academy/*"
-  to = "/:splat"
+  from = "/:locale/blog"
+  to = "/blog/:locale"
   status = 200
   force = true
+
+# [[redirects]]
+#   from = "/:locale/blog/*"
+#   to = "/:locale/:splat"
+#   status = 200
+#   force = true
+
+
+# [[redirects]]
+#   from = "/academy/*"
+#   to = "/:splat"
+#   status = 200
+#   force = true
 
 
 # [[redirects]]
