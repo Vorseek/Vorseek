@@ -5,6 +5,10 @@
   path = "/blog/*"
   function = "rewrite"
 
+[[edge_functions]]
+  path = "/*"
+  function = "rewrite"
+
 
 # [[redirects]]
 #   from = "/test"
@@ -38,11 +42,11 @@
 #   status = 200
 #   force = true
 
-# [[redirects]]
-#   from = "/:locale/blog"
-#   to = "/blog/:locale"
-#   status = 301
-#   force = true
+[[redirects]]
+  from = "/blog/*"
+  to = "/:page"
+  status = 301
+  force = true
 
 # [[redirects]]
 #   from = "/:locale/blog/*"
@@ -51,11 +55,11 @@
 #   force = true
 
 
-# [[redirects]]
-#   from = "/academy/*"
-#   to = "/:splat"
-#   status = 200
-#   force = true
+[[redirects]]
+  from = "/academy/*"
+  to = "/:splat"
+  status = 200
+  force = true
 
 
 # [[redirects]]
