@@ -18,6 +18,13 @@ const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => (
       id="googletagmanager"
       strategy="worker"
       src="https://www.googletagmanager.com/gtm.js?id=GTM-WD9827X"
+      onLoad={() => {
+        window.dataLayer = [];
+        window.dataLayer.push({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js',
+        });
+      }}
     />
   </SimpleBar>
 );

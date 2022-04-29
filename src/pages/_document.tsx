@@ -8,6 +8,8 @@ const Document = () => (
         dangerouslySetInnerHTML={{
           __html: `
               partytown = {
+                lib: "/_next/static/~partytown/",
+                debug: true,
                 forward: ["dataLayer.push"]
               };
             `,
