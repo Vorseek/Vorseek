@@ -31,7 +31,11 @@ export const getServerSideProps: GetServerSideProps = async ({ res }) => {
     result.push(image);
   });
 
+  const largeImageArr = await Promise.all(result).then((values) =>
+    values.map((el) => JSON.stringify(el.data))
+  );
+
   return {
-    props: { res }, // will be passed to the page component as props
+    props: { largeImageArr }, // will be passed to the page component as props
   };
 };
