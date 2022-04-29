@@ -1,7 +1,7 @@
 import 'assets/styles/globals.css';
 import 'simplebar/dist/simplebar.min.css';
 import SimpleBar from 'simplebar-react';
-import type { AppProps } from 'next/app';
+import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import { useRouter } from 'next/router';
 
 interface Props extends AppProps {
@@ -14,13 +14,7 @@ const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => {
 
   return (
     <SimpleBar className="simple-scroll-custom">
-      <h1>Router locale {router.locale}</h1>
       <Component {...pageProps} stars={stars} timeInitialProps={timeInitialProps} />
-      <h1>
-        {timeInitialProps?.split('\n').map((text) => (
-          <p key={text}>{text}</p>
-        ))}
-      </h1>
     </SimpleBar>
   );
 };
@@ -40,3 +34,25 @@ MyApp.getInitialProps = async () => {
 };
 
 export default MyApp;
+
+export function reportWebVitals(metric: NextWebVitalsMetric) {
+  switch (metric.name) {
+    case 'FCP':
+      console.log('FCP', metric.value);
+      break;
+    case 'LCP':
+      console.log('LCP', metric.value);
+      break;
+    case 'CLS':
+      console.log('CLS', metric.value);
+      break;
+    case 'FID':
+      console.log('FID', metric.value);
+      break;
+    case 'TTFB':
+      console.log('TTFB', metric.value);
+      break;
+    default:
+      break;
+  }
+}

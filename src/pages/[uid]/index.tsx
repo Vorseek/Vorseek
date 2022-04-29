@@ -26,6 +26,8 @@ const StaticProps: NextPage<Props> = (props) => {
 };
 
 export async function getStaticProps() {
+  const timerMS = 0;
+
   const res = await new Promise((resolve) => {
     setTimeout(() => {
       resolve(
@@ -35,7 +37,7 @@ export async function getStaticProps() {
           minutes: ${new Date().getMinutes()} 
           `
       );
-    }, 3000);
+    }, timerMS);
   });
 
   const arr = new Array(1).fill(null);
