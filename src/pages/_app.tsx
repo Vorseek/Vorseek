@@ -2,6 +2,8 @@ import 'assets/styles/globals.css';
 import 'simplebar/dist/simplebar.min.css';
 import SimpleBar from 'simplebar-react';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
+import Script from 'next/script';
+import { yandexMetricScript } from 'utils';
 
 interface Props extends AppProps {
   stars: number;
@@ -11,6 +13,13 @@ interface Props extends AppProps {
 const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => (
   <SimpleBar className="simple-scroll-custom">
     <Component {...pageProps} stars={stars} timeInitialProps={timeInitialProps} />
+
+    {/* scripts zone */}
+    <Script
+      id="yandex-metric"
+      strategy="lazyOnload"
+      dangerouslySetInnerHTML={yandexMetricScript()}
+    />
   </SimpleBar>
 );
 
