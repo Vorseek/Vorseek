@@ -9,19 +9,32 @@ interface Props extends AppProps {
   stars: number;
   timeInitialProps: string;
 }
+const getIsSlowNetwork = () => {
+  if (typeof window !== 'undefined') {
+    return window.navigator.connection.downlink < 2;
+  }
 
-const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => (
-  <SimpleBar className="simple-scroll-custom">
-    <Component {...pageProps} stars={stars} timeInitialProps={timeInitialProps} />
+  return false;
+};
 
-    {/* scripts zone */}
-    <Script
-      id="yandex-metric"
-      strategy="lazyOnload"
-      dangerouslySetInnerHTML={yandexMetricScript()}
-    />
-  </SimpleBar>
-);
+const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => {
+  const isSlowConnect = getIsSlowNetwork();
+
+  return (
+    <SimpleBar className="simple-scroll-custom">
+      <Component {...pageProps} stars={stars} timeInitialProps={timeInitialProps} />
+
+      {/* scripts zone */}
+      {isSlowConnect ? (
+        <Script
+          id="yandex-metric"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={yandexMetricScript()}
+        />
+      ) : null}
+    </SimpleBar>
+  );
+};
 
 MyApp.getInitialProps = async () => {
   // TODO: remove / default function

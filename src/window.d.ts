@@ -1,0 +1,3 @@
+interface NetworkInformation {
+  downlink: number;
+}
