@@ -2,7 +2,18 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 const Document = () => (
   <Html lang="ru">
-    <Head />
+    <Head>
+      <script
+        data-partytown-config
+        dangerouslySetInnerHTML={{
+          __html: `
+              partytown = {
+                forward: ["dataLayer.push"]
+              };
+            `,
+        }}
+      />
+    </Head>
     <body>
       <Main />
       <NextScript />
