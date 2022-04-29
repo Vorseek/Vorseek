@@ -3,5 +3,5 @@ interface NetworkInformation {
 }
 
 interface Window {
-  dataLayer?: any[];
+  dataLayer?: Record<string, string | number>[];
 }
