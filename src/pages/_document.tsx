@@ -2,7 +2,9 @@ import { Html, Head, Main, NextScript } from 'next/document';
 
 const Document = () => (
   <Html lang="ru">
-    <Head />
+    <Head>
+      <link rel="preconnect" href="https://mc.yandex.ru" />
+    </Head>
     <body>
       <Main />
       <NextScript />
