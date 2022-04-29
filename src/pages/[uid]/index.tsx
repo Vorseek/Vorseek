@@ -46,7 +46,7 @@ export async function getStaticProps() {
 
   arr.forEach(async () => {
     const image = axios.get(
-      'https://images.pexels.com/photos/11254131/pexels-photo-11254131.jpeg?cs=srgb&dl=pexels-summer-rune-11254131.jpg&fm=jpg&w=1920&h=2868'
+      'https://images.pexels.com/photos/11254131/pexels-photo-11254131.jpeg?cs=srgb&dl=pexels-summer-rune-11254131.jpg&fm=jpg&w=1300&h=1300'
     );
 
     result.push(image);
