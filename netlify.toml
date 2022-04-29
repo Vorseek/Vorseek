@@ -1,13 +1,13 @@
 [[plugins]]
   package = "@netlify/plugin-sitemap"
 
-[[edge_functions]]
-  path = "/blog/*"
-  function = "rewrite"
+# [[edge_functions]]
+#   path = "/blog/*"
+#   function = "rewrite"
 
-[[edge_functions]]
-  path = "/*"
-  function = "rewrite"
+# [[edge_functions]]
+#   path = "/*"
+#   function = "rewrite"
 
 
 # [[redirects]]
