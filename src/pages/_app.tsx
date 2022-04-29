@@ -3,6 +3,7 @@ import 'simplebar/dist/simplebar.min.css';
 import SimpleBar from 'simplebar-react';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Script from 'next/script';
+import { yandexMetricScript } from 'utils';
 
 interface Props extends AppProps {
   stars: number;
@@ -25,6 +26,11 @@ const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => (
       'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-WD9827X');`,
       }}
+    />
+    <Script
+      id="yandex-metric"
+      strategy="lazyOnload"
+      dangerouslySetInnerHTML={yandexMetricScript()}
     />
   </SimpleBar>
 );
