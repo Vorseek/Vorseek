@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@builder.io/partytown": "^0.5.2",
     "@react-spring/core": "^9.4.2",
     "@react-spring/three": "^9.4.2",
     "@react-spring/web": "^9.4.2",

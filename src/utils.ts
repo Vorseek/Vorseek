@@ -11,6 +11,10 @@ webvisor:true
 });`,
 });
 
-export const nextScript = () => {
-  console.log('nextScript');
+export const getIsSlowNetwork = () => {
+  if (typeof window !== 'undefined') {
+    return window.navigator.connection.downlink < 2;
+  }
+
+  return false;
 };

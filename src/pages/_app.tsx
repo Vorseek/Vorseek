@@ -3,38 +3,24 @@ import 'simplebar/dist/simplebar.min.css';
 import SimpleBar from 'simplebar-react';
 import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Script from 'next/script';
-import { yandexMetricScript } from 'utils';
 
 interface Props extends AppProps {
   stars: number;
   timeInitialProps: string;
 }
-const getIsSlowNetwork = () => {
-  if (typeof window !== 'undefined') {
-    return window.navigator.connection.downlink < 2;
-  }
 
-  return false;
-};
+const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => (
+  <SimpleBar className="simple-scroll-custom">
+    <Component {...pageProps} stars={stars} timeInitialProps={timeInitialProps} />
 
-const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => {
-  const isSlowConnect = getIsSlowNetwork();
-
-  return (
-    <SimpleBar className="simple-scroll-custom">
-      <Component {...pageProps} stars={stars} timeInitialProps={timeInitialProps} />
-
-      {/* scripts zone */}
-      {isSlowConnect ? (
-        <Script
-          id="yandex-metric"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={yandexMetricScript()}
-        />
-      ) : null}
-    </SimpleBar>
-  );
-};
+    {/* scripts zone */}
+    <Script
+      id="googletagmanager"
+      strategy="worker"
+      src="https://www.googletagmanager.com/gtm.js?id=GTM-WD9827X"
+    />
+  </SimpleBar>
+);
 
 MyApp.getInitialProps = async () => {
   // TODO: remove / default function
