@@ -45,7 +45,7 @@ const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => {
         <Script
           id="googletagmanager"
           strategy="worker"
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-WD9827X"
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-KN43R7Q"
         />
       )}
     </SimpleBar>
