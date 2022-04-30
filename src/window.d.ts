@@ -1,5 +1,5 @@
 interface NetworkInformation {
-  downlink: number;
+  downlink?: number;
 }
 
 interface Window {

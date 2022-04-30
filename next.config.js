@@ -16,6 +16,14 @@ const nextConfig = {
         source: '/blog/:path*',
         destination: '/:path*',
       },
+      {
+        source: '/proxy/facebook/:path*',
+        destination: 'https://connect.facebook.net/:path*',
+      },
+      {
+        source: '/proxy/google/:path*',
+        destination: 'https://www.googletagmanager.com/:path*',
+      },
     ];
   },
   experimental: {
