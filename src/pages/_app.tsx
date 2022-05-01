@@ -30,23 +30,57 @@ const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => {
       {/* scripts zone */}
 
       {after ? (
-        <Script
-          id="googletagmanager"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        <>
+          <Script
+            id="googletagmanager"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
  })(window,document,'script','dataLayer','GTM-WD9827X');`,
-          }}
-        />
+            }}
+          />
+          <Script
+            id="CookieHub"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html:
+                'var cpm = {};\n' +
+                '(function(h,u,b){\n' +
+                'var d=h.getElementsByTagName("script")[0],e=h.createElement("script");\n' +
+                "e.async=true;e.src='https://cookiehub.net/c2/be78eaaf.js';\n" +
+                'e.onload=function(){u.cookiehub.load(b);}\n' +
+                'd.parentNode.insertBefore(e,d);\n' +
+                '})(document,window,cpm);',
+            }}
+          />
+        </>
       ) : (
-        <Script
-          id="googletagmanager"
-          strategy="worker"
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-KN43R7Q"
-        />
+        <>
+          <Script
+            id="googletagmanager"
+            strategy="worker"
+            src="https://www.googletagmanager.com/gtm.js?id=GTM-KN43R7Q"
+          />
+          <Script
+            id="CookieHub"
+            // type="text/partytown"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+              window.cpm = {};
+              (function(h,u,cpm){
+                var d=h.getElementsByTagName("script")[0],e=h.createElement("script");
+                e.async=true;e.src='https://cookiehub.net/c2/be78eaaf.js';
+                e.onload=function(){u.cookiehub.load(cpm);}
+                d.parentNode.insertBefore(e,d);
+              })(document,window,window.cpm)
+              `,
+            }}
+          />
+        </>
       )}
     </SimpleBar>
   );
