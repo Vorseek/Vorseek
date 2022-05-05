@@ -100,6 +100,11 @@
     X-Robots-Tag = "noindex, nofollow"
 
 [[headers]]
-  for = "/pt/coin-price-chart/:splat"
+  for = "/serverside"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/1"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
