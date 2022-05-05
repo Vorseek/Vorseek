@@ -6,6 +6,16 @@ const nextConfig = {
     locales: ['en', 'fr', 'nl'],
     defaultLocale: 'en',
   },
+  headers: async () => [
+    {
+      source: '/ru/coin-price-chart',
+      headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+    },
+    {
+      source: '/serverside',
+      headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+    },
+  ],
   async rewrites() {
     return [
       {
