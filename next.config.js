@@ -20,10 +20,6 @@ const nextConfig = {
         source: '/proxy/facebook/:path*',
         destination: 'https://connect.facebook.net/:path*',
       },
-      {
-        source: '/proxy/google/:path*',
-        destination: 'https://www.googletagmanager.com/:path*',
-      },
     ];
   },
   experimental: {
