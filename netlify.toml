@@ -73,3 +73,33 @@
 #   function = "transform"
 #   path = "/*"
   
+
+  [[headers]]
+  for = "/ru/coin-price-chart"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/es/coin-price-chart"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/pt/coin-price-chart"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/ru/coin-price-chart/:splat"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/es/coin-price-chart/:splat"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
+  for = "/pt/coin-price-chart/:splat"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
