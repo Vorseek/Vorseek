@@ -1,13 +1,9 @@
-import axios from 'axios';
-import type { GetServerSideProps } from 'next';
-import Router, { useRouter } from 'next/router';
+import { usePageSpeedRequest } from 'hooks/usePageSpeedRequest';
+import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import { CONTENT_WRAPPER, FORM_STYLES, INPUT_STYLES, LOADING_STYLES } from 'styles';
-import { PageSpeedData } from 'types';
 
-const PAGE_SPEED_KEY = 'AIzaSyD6CQTIkDv3fMgyj3sthUcpXI-0YNWuRW0';
-
-const InputRedirect = () => {
+const InputRedirect = ({ loading }) => {
   const ref = useRef(null);
   const {
     push,
@@ -16,7 +12,6 @@ const InputRedirect = () => {
 
   const [urlForPageSpeed, setUrlForPageSpeed] = useState(url);
   const [numberOfRequest, setNumberOfRequest] = useState(count || '10');
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const focusHandle = () => {
@@ -27,15 +22,9 @@ const InputRedirect = () => {
 
     focusHandle();
 
-    const changeLoading = () => setLoading((value) => !value);
-
-    Router.events.on('routeChangeStart', changeLoading);
-    Router.events.on('routeChangeComplete', changeLoading);
     window.addEventListener('focus', focusHandle);
 
     return () => {
-      Router.events.off('routeChangeStart', changeLoading);
-      Router.events.off('routeChangeComplete', changeLoading);
       window.removeEventListener('focus', focusHandle);
     };
   }, []);
@@ -84,63 +73,23 @@ const InputRedirect = () => {
   );
 };
 
-const PageSpeed = ({ categoriesPerformance, avrResultTest, requestTime, strategy }) => (
-  <div>
-    <InputRedirect />
-    <div style={CONTENT_WRAPPER}>
-      <p>Count request: {categoriesPerformance?.length}</p>
-      <p>Results: {JSON.stringify(categoriesPerformance)}</p>
-      <p>
-        Avr {strategy} result (strategy: MOBILE | DESKTOP): {avrResultTest}
-      </p>
-      <p>Request time (sec): {requestTime}</p>
+const PageSpeed = () => {
+  const { response } = usePageSpeedRequest();
+  const { categoriesPerformance, avrResultTest, requestTime, strategy, loading } = response;
+
+  return (
+    <div>
+      <InputRedirect loading={loading} />
+      <div style={CONTENT_WRAPPER}>
+        <p>Count request: {categoriesPerformance?.length}</p>
+        <p>Results: {JSON.stringify(categoriesPerformance)}</p>
+        <p>
+          Avr {strategy} result (strategy: MOBILE | DESKTOP): {avrResultTest}
+        </p>
+        <p>Request time (sec): {requestTime}</p>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default PageSpeed;
-
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { url, count, strategy = 'MOBILE' } = query;
-
-  if (!url) {
-    return {
-      props: {},
-    };
-  }
-
-  const startDate = +new Date();
-
-  const arr = new Array(+count).fill(null);
-
-  const pageSpeedResponse = [] as PageSpeedData[];
-
-  const pageSpeedRequest = () =>
-    axios
-      .get(
-        `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${PAGE_SPEED_KEY}&strategy=${strategy}&category=performance`
-      )
-      .then(async (el) => {
-        pageSpeedResponse.push(el.data);
-
-        if (pageSpeedResponse.length < arr.length) {
-          await pageSpeedRequest();
-        }
-      });
-
-  await pageSpeedRequest();
-
-  const categoriesPerformance = pageSpeedResponse.map(
-    (testResult) => testResult.lighthouseResult.categories.performance.score
-  );
-
-  const sumResult = categoriesPerformance.reduce((prev, current) => prev + current, 0);
-
-  const avrResultTest = (sumResult / pageSpeedResponse.length) * 100;
-
-  const requestTime = (+new Date() - startDate) / 1000;
-
-  return {
-    props: { categoriesPerformance, avrResultTest, requestTime, strategy },
-  };
-};
