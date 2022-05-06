@@ -1,10 +1,9 @@
+import styles from 'assets/styles/Home.module.css';
+import Header from 'components/HomePage/Header';
+import Laptop from 'components/HomePage/Laptop';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from 'assets/styles/Home.module.css';
-import Laptop from 'components/HomePage/Laptop';
-import Header from 'components/HomePage/Header';
-import Link from 'next/link';
 
 const Home: NextPage = () => (
   <div className={styles.container}>
@@ -17,10 +16,6 @@ const Home: NextPage = () => (
     <Header />
 
     <Laptop />
-
-    <Link href="/1">
-      <a>Test page 1</a>
-    </Link>
 
     <footer className={styles.footer}>
       <a
