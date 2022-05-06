@@ -1,10 +1,11 @@
 import 'assets/styles/globals.css';
-import 'simplebar/dist/simplebar.min.css';
-import SimpleBar from 'simplebar-react';
-import type { AppProps, NextWebVitalsMetric } from 'next/app';
-import Script from 'next/script';
-import { useRouter } from 'next/router';
 import { linkStyles } from 'const';
+import type { AppProps, NextWebVitalsMetric } from 'next/app';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import SimpleBar from 'simplebar-react';
+import 'simplebar/dist/simplebar.min.css';
 
 interface Props extends AppProps {
   stars: number;
@@ -15,7 +16,66 @@ const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => {
   const {
     asPath,
     query: { after },
+    push,
   } = useRouter();
+
+  // useEffect(() => {
+  //   window.dataLayer = [];
+  //
+  //   const script = document.createElement('script');
+  //   script.async = true;
+  //   // script.type = 'text/partytown';
+  //   script.src = `https://www.googletagmanager.com/gtm.js?id=GTM-KN43R7Q`;
+  //   window.document.head.prepend(script);
+  //
+  //   script.onload = () => {
+  //     console.log(window.google_tag_manager);
+  //   };
+  //   script.onerror = (error) => {
+  //     console.error('Failed to load GTM script', error);
+  //   };
+  // }, []);
+
+  const [state, setState] = useState(true);
+
+  useEffect(() => {
+    let test = true;
+
+    const handleMove = () => {
+      if (!state || !test) {
+        return;
+      }
+      test = false;
+
+      const innerScript = document.createElement('script');
+
+      innerScript.innerHTML =
+        'var cpm = {};\n' +
+        '(function(h,u,b){\n' +
+        'var d=h.getElementsByTagName("script")[0],e=h.createElement("script");\n' +
+        "e.async=true;e.src='https://cookiehub.net/c2/be78eaaf.js';\n" +
+        'e.onload=function(){u.cookiehub.load(b);}\n' +
+        'd.parentNode.insertBefore(e,d);\n' +
+        '})(document,window,cpm);';
+
+      window.document.head.prepend(innerScript);
+
+      const gtmScript = document.createElement('script');
+      gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=GTM-KN43R7Q';
+      window.document.head.prepend(gtmScript);
+
+      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener('scroll', handleMove);
+    };
+
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('scroll', handleMove);
+
+    return () => {
+      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener('scroll', handleMove);
+    };
+  }, [state]);
 
   return (
     <SimpleBar className="simple-scroll-custom">
@@ -25,63 +85,56 @@ const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => {
       <a href={`${asPath}?after=true`} style={linkStyles}>
         afterInteractive
       </a>
+      <Link href="/serverside">
+        <a style={linkStyles}>To</a>
+      </Link>
+      <button
+        type="button"
+        onClick={() => {
+          push('/');
+        }}
+      >
+        Back
+      </button>
       <Component {...pageProps} stars={stars} timeInitialProps={timeInitialProps} />
 
       {/* scripts zone */}
 
-      {after ? (
-        <>
-          <Script
-            id="googletagmanager"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
- new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
- j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
- 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
- })(window,document,'script','dataLayer','GTM-WD9827X');`,
-            }}
-          />
-          <Script
-            id="CookieHub"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html:
-                'var cpm = {};\n' +
-                '(function(h,u,b){\n' +
-                'var d=h.getElementsByTagName("script")[0],e=h.createElement("script");\n' +
-                "e.async=true;e.src='https://cookiehub.net/c2/be78eaaf.js';\n" +
-                'e.onload=function(){u.cookiehub.load(b);}\n' +
-                'd.parentNode.insertBefore(e,d);\n' +
-                '})(document,window,cpm);',
-            }}
-          />
-        </>
-      ) : (
-        <>
-          <Script
-            id="googletagmanager"
-            strategy="worker"
-            src="https://www.googletagmanager.com/gtm.js?id=GTM-KN43R7Q"
-          />
-          <Script
-            id="CookieHub"
-            // type="text/partytown"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.cpm = {};
-              (function(h,u,cpm){
-                var d=h.getElementsByTagName("script")[0],e=h.createElement("script");
-                e.async=true;e.src='https://cookiehub.net/c2/be78eaaf.js';
-                e.onload=function(){u.cookiehub.load(cpm);}
-                d.parentNode.insertBefore(e,d);
-              })(document,window,window.cpm)
-              `,
-            }}
-          />
-        </>
-      )}
+      {/*     {after ? ( */}
+      {/*       <> */}
+      {/*         <Script */}
+      {/*           id="googletagmanager" */}
+      {/*           strategy="afterInteractive" */}
+      {/*           dangerouslySetInnerHTML={{ */}
+      {/*             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': */}
+      {/* new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], */}
+      {/* j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= */}
+      {/* 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); */}
+      {/* })(window,document,'script','dataLayer','GTM-WD9827X');`, */}
+      {/*           }} */}
+      {/*         /> */}
+      {/*         <Script */}
+      {/*           id="CookieHub" */}
+      {/*           strategy="afterInteractive" */}
+      {/*           dangerouslySetInnerHTML={{ */}
+      {/*             __html: */}
+      {/*               'var cpm = {};\n' +*/}
+      {/*               '(function(h,u,b){\n' +*/}
+      {/*               'var d=h.getElementsByTagName("script")[0],e=h.createElement("script");\n' +*/}
+      {/*               "e.async=true;e.src='https://cookiehub.net/c2/be78eaaf.js';\n" +*/}
+      {/*               'e.onload=function(){u.cookiehub.load(b);}\n' +*/}
+      {/*               'd.parentNode.insertBefore(e,d);\n' +*/}
+      {/*               '})(document,window,cpm);', */}
+      {/*           }} */}
+      {/*         /> */}
+      {/*       </> */}
+      {/*     ) : ( */}
+      {/*       <Script */}
+      {/*         id="googletagmanager" */}
+      {/*         strategy="worker" */}
+      {/*         src="https://www.googletagmanager.com/gtm.js?id=GTM-KN43R7Q" */}
+      {/*       /> */}
+      {/*     )} */}
     </SimpleBar>
   );
 };
