@@ -1,7 +1,14 @@
-import { usePageSpeedRequest } from 'hooks/usePageSpeedRequest';
 import { useRouter } from 'next/router';
 import React, { useEffect, useRef, useState } from 'react';
 import { CONTENT_WRAPPER, FORM_STYLES, INPUT_STYLES, LOADING_STYLES } from 'styles';
+
+interface PageSpeedResponse {
+  categoriesPerformance?: number[];
+  avrResultTest?: number;
+  requestTime?: number;
+  strategy?: string | string[];
+  loading?: boolean;
+}
 
 const InputRedirect = ({ loading }) => {
   const ref = useRef(null);
@@ -74,20 +81,38 @@ const InputRedirect = ({ loading }) => {
 };
 
 const PageSpeed = () => {
-  const {
-    query: { count },
-  } = useRouter();
-  const { response } = usePageSpeedRequest();
-  const { categoriesPerformance, avrResultTest, requestTime, strategy, loading } = response;
+  const workerRef = useRef<Worker>();
+  const [response, setResponse] = useState<PageSpeedResponse>({});
+  const router = useRouter();
+  const { url, count, strategy = 'MOBILE' } = router.query;
+  // pageSpeed request
+  // const { response } = usePageSpeedRequest();
+  const { categoriesPerformance, avrResultTest, requestTime, loading } = response;
+
+  useEffect(() => {
+    workerRef.current = new Worker(
+      new URL('../workers/pageSpeed/pageSpeed.worker.ts', import.meta.url)
+    );
+    workerRef.current.onmessage = ({ data }) => setResponse((prev) => ({ ...prev, ...data }));
+
+    return () => {
+      workerRef.current.terminate();
+    };
+  }, []);
+
+  useEffect(() => {
+    workerRef.current.postMessage({ url, count, strategy });
+  }, [router]);
 
   const countRequest = count ? ` ${categoriesPerformance?.length || 0} / ${count}` : '';
+  const resultPerformance = categoriesPerformance ? JSON.stringify(categoriesPerformance) : null;
 
   return (
     <div>
       <InputRedirect loading={loading} />
       <div style={CONTENT_WRAPPER}>
         <p>Count request: {countRequest}</p>
-        <p>Results: {JSON.stringify(categoriesPerformance)}</p>
+        <p>Results: {resultPerformance}</p>
         <p>
           Avr {strategy} result (strategy: MOBILE | DESKTOP): {avrResultTest}
         </p>
