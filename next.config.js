@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+/** @type {import("next").NextConfig} */
 const nextConfig = {
   // basePath: '/blog',
   reactStrictMode: true,
@@ -31,9 +31,6 @@ const nextConfig = {
         destination: 'https://connect.facebook.net/:path*',
       },
     ];
-  },
-  experimental: {
-    nextScriptWorkers: true,
   },
 };
 

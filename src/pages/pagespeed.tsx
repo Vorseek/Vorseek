@@ -94,7 +94,8 @@ const PageSpeed = () => {
 
   useEffect(() => {
     workerRef.current = new Worker(
-      new URL('../workers/pageSpeed/pageSpeed.worker.ts', import.meta.url)
+      new URL('../workers/pageSpeed/pageSpeed.worker.ts', import.meta.url),
+      { name: 'vorseek 😍 worker' }
     );
     workerRef.current.onmessage = ({ data }) => setResponse((prev) => ({ ...prev, ...data }));
 
