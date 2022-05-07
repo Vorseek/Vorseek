@@ -14,18 +14,18 @@ const InputRedirect = ({ loading }) => {
   const [numberOfRequest, setNumberOfRequest] = useState(count || '10');
 
   useEffect(() => {
-    const focusHandle = () => {
+    const handleFocus = () => {
       if (ref.current) {
         ref.current.focus();
       }
     };
 
-    focusHandle();
+    handleFocus();
 
-    window.addEventListener('focus', focusHandle);
+    window.addEventListener('focus', handleFocus);
 
     return () => {
-      window.removeEventListener('focus', focusHandle);
+      window.removeEventListener('focus', handleFocus);
     };
   }, []);
 
@@ -74,14 +74,19 @@ const InputRedirect = ({ loading }) => {
 };
 
 const PageSpeed = () => {
+  const {
+    query: { count },
+  } = useRouter();
   const { response } = usePageSpeedRequest();
   const { categoriesPerformance, avrResultTest, requestTime, strategy, loading } = response;
+
+  const countRequest = count ? ` ${categoriesPerformance?.length || 0} / ${count}` : '';
 
   return (
     <div>
       <InputRedirect loading={loading} />
       <div style={CONTENT_WRAPPER}>
-        <p>Count request: {categoriesPerformance?.length}</p>
+        <p>Count request: {countRequest}</p>
         <p>Results: {JSON.stringify(categoriesPerformance)}</p>
         <p>
           Avr {strategy} result (strategy: MOBILE | DESKTOP): {avrResultTest}
