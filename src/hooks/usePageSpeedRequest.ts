@@ -35,7 +35,7 @@ export const usePageSpeedRequest = () => {
     const pageSpeedRequest = () =>
       axios
         .get(
-          `https://www.googleapiss.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${PAGE_SPEED_KEY}&strategy=${strategy}&category=performance`
+          `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${PAGE_SPEED_KEY}&strategy=${strategy}&category=performance`
         )
         .then(async (el) => {
           pageSpeedResponse.push(el.data);
