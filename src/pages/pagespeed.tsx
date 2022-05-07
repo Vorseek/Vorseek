@@ -69,7 +69,10 @@ const InputRedirect = ({ loading }) => {
           defaultValue={numberOfRequest}
           onChange={handleCountChange}
         />
-        <input type="submit" hidden />
+        <input
+          type="submit"
+          style={{ position: 'absolute', left: '-99999px', width: '1px', height: '1px' }}
+        />
       </form>
       {loading && (
         <h1 style={LOADING_STYLES} className="loading">
