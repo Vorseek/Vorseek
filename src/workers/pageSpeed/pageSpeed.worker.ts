@@ -43,6 +43,7 @@ addEventListener('message', async (event: MessageEvent<DataEvent>) => {
     const countRequest = new Array(+count).fill(null);
     const pageSpeedResponse = [] as PageSpeedData[];
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     for (const elem of countRequest) {
       const { data } = await axios.get(
         `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${url}&key=${PAGE_SPEED_KEY}&strategy=${strategy}&category=performance`

@@ -108,17 +108,20 @@ const PageSpeed = () => {
   const resultPerformance = categoriesPerformance ? JSON.stringify(categoriesPerformance) : null;
 
   return (
-    <div>
-      <InputRedirect loading={loading} />
-      <div style={CONTENT_WRAPPER}>
-        <p>Count request: {countRequest}</p>
-        <p>Results: {resultPerformance}</p>
-        <p>
-          Avr {strategy} result (strategy: MOBILE | DESKTOP): {avrResultTest}
-        </p>
-        <p>Request time (sec): {requestTime}</p>
+    <>
+      <title>Vorseek{countRequest}</title>
+      <div>
+        <InputRedirect loading={loading} />
+        <div style={CONTENT_WRAPPER}>
+          <p>Count request: {countRequest}</p>
+          <p>Results: {resultPerformance}</p>
+          <p>
+            Avr {strategy} result (strategy: MOBILE | DESKTOP): {avrResultTest}
+          </p>
+          <p>Request time (sec): {requestTime}</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
