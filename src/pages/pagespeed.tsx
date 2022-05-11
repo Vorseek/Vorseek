@@ -111,6 +111,16 @@ const PageSpeed = () => {
   const countRequest = count ? ` ${categoriesPerformance?.length || 0} / ${count}` : '';
   const resultPerformance = categoriesPerformance ? JSON.stringify(categoriesPerformance) : null;
 
+  const getColor = () => {
+    if (avrResultTest > 80) {
+      return 'rgb(0, 204, 102)';
+    }
+    if (avrResultTest > 50) {
+      return 'yellow';
+    }
+    return 'orangered';
+  };
+
   return (
     <>
       <title>Vorseek{countRequest}</title>
@@ -120,7 +130,8 @@ const PageSpeed = () => {
           <p>Count request: {countRequest}</p>
           <p>Results: {resultPerformance}</p>
           <p>
-            Avr {strategy} result (strategy: MOBILE | DESKTOP): {avrResultTest}
+            Avr {strategy} result (strategy: MOBILE | DESKTOP):{' '}
+            <span style={{ color: getColor() }}>{avrResultTest}</span>
           </p>
           <p>Request time (sec): {requestTime}</p>
         </div>
