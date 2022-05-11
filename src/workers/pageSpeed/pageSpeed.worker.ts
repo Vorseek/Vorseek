@@ -15,7 +15,7 @@ const getCategoriesPerformance = (pageSpeedResponse: PageSpeedData[]) =>
 const getPageSpeedResult = (pageSpeedResponse: PageSpeedData[]) => {
   const categoriesPerformance = getCategoriesPerformance(pageSpeedResponse);
   const sumResult = categoriesPerformance.reduce((prev, current) => prev + current, 0);
-  const avrResultTest = (sumResult / pageSpeedResponse.length) * 100;
+  const avrResultTest = ((sumResult / pageSpeedResponse.length) * 100).toFixed(0);
 
   return { categoriesPerformance, avrResultTest };
 };

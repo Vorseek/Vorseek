@@ -102,7 +102,7 @@ const PageSpeed = () => {
     return () => {
       workerRef.current.terminate();
     };
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     workerRef.current.postMessage({ url, count, strategy });
