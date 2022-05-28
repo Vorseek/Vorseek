@@ -42,7 +42,7 @@ export async function getStaticProps() {
 
   const result = [] as Promise<AxiosResponse>[];
 
-  arr.forEach(async () => {
+  arr.forEach(() => {
     const image = axios.get(
       'https://images.pexels.com/photos/11254131/pexels-photo-11254131.jpeg?cs=srgb&dl=pexels-summer-rune-11254131.jpg&fm=jpg&w=900&h=800'
     );
