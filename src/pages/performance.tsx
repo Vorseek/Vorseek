@@ -11,13 +11,13 @@ const PerformancePage = () => {
     // });
 
     const time = calculatePerformanceTime(() => {
-      new Array(1000).fill({ test: 'test', data: { data: {} } }).forEach(Boolean);
+      new Array(1000000).fill({ test: 'test', data: { data: {} } }).forEach(Boolean);
     });
 
     console.log(time, 'callback');
 
     const time2 = calculatePerformanceTime(() => {
-      new Array(1000)
+      new Array(1000000)
         .fill({ test: 'test', data: { data: {} } })
         .forEach((el) => Boolean({ ...el }));
     });
