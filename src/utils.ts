@@ -18,3 +18,14 @@ export const getIsSlowNetwork = () => {
 
   return false;
 };
+
+export const calculatePerformanceTime = (func: () => void) => {
+  const startTime = window.performance.now();
+
+  func();
+
+  const endTime = window.performance.now();
+
+  const time = endTime - startTime;
+  return time > 0 ? time : 0.1;
+};
