@@ -4,6 +4,7 @@ import Laptop from 'components/HomePage/Laptop';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 const Home: NextPage = () => (
   <div className={styles.container}>
@@ -17,7 +18,14 @@ const Home: NextPage = () => (
 
     <Laptop />
 
-    <Image src="https://i.ytimg.com/vi/UKl7R5bpVeQ/maxresdefault.jpg" width={500} height={500} />
+    <Image
+      src="https://i.ytimg.com/vi/UKl7R5bpVeQ/maxresdefaultx.jpg"
+      width={500}
+      height={500}
+      onError={() => {
+        console.log('error');
+      }}
+    />
 
     <footer className={styles.footer}>
       <a

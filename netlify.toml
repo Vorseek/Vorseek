@@ -61,12 +61,12 @@
   status = 200
   force = true
 
-[[redirects]]
-  from = "/_next/image"
-  query = {w = ":width", q = ":quality", url = ":url"}
-  to = "/_ipx/w_:width,q_:quality/https://i.ytimg.com/vi/UKl7R5bpVeQ/sddefault.jpg"
-  status = 200
-  force = true
+# [[redirects]]
+#   from = "/_next/image"
+#   query = {w = ":width", q = ":quality", url = ":url"}
+#   to = "/_ipx/w_:width,q_:quality/:url"
+#   status = 200
+#   force = true
 
 
 

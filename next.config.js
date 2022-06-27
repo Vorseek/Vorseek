@@ -30,8 +30,31 @@ const nextConfig = {
         source: '/proxy/facebook/:path*',
         destination: 'https://connect.facebook.net/:path*',
       },
+      {
+        source: '/_next/image',
+        has: [
+          { type: 'query', key: 'w' },
+          { type: 'query', key: 'q' },
+          { type: 'query', key: 'url' },
+        ],
+        destination: '/_ipx/w_:w,q_:q/:url',
+      },
     ];
   },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/_next/image',
+  //       has: [
+  //         { type: 'query', key: 'w' },
+  //         { type: 'query', key: 'q' },
+  //         { type: 'query', key: 'url' },
+  //       ],
+  //       destination: '/_ipx/w_:w,q_:q/:url',
+  //       permanent: false,
+  //     },
+  //   ];
+  // },
   images: {
     domains: ['i.ytimg.com'],
   },
