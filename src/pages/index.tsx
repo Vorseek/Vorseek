@@ -17,6 +17,8 @@ const Home: NextPage = () => (
 
     <Laptop />
 
+    <Image src="https://i.ytimg.com/vi/UKl7R5bpVeQ/maxresdefault.jpg" width={500} height={500} />
+
     <footer className={styles.footer}>
       <a
         href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
