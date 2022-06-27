@@ -61,6 +61,14 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "/_next/image"
+  query = {w = ":width", q = ":quality", url = ":url"}
+  to = "/_ipx/w_:width,q_:quality/:url"
+  status = 200
+  force = true
+
+
 
 # [[redirects]]
 #   from = "/:locale/blog"
