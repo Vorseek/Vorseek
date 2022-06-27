@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { NextPage } from 'next';
 import React from 'react';
+import Image from 'next/image';
 
 interface Props {
   res: string;
@@ -10,8 +11,18 @@ interface Props {
 const StaticProps: NextPage<Props> = (props) => {
   const { res, timeInitialProps } = props;
 
+  const handleError = () => {
+    console.log('error');
+  };
+
   return (
     <div>
+      <Image
+        src="https://i.ytimg.com/vi/UKl7R5bpVeQs/maxresdefault.jpg"
+        width={500}
+        height={500}
+        onError={handleError}
+      />
       <p>Static build</p>
       {res?.split('\n').map((text) => (
         <p key={text}>{text}</p>
