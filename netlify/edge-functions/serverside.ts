@@ -15,11 +15,11 @@ interface Context {
 }
 
 export default async (request: Request, context: Context) => {
-  const res = await context.next();
-
-  // res.headers['x-nf-geo'] = request.headers.get('x-nf-geo');
-
-  res.headers.set('x-nf-geo', request.headers.get('x-nf-geo'));
-
-  return res;
+  // const res: Response = await context.next();
+  //
+  // // res.headers['x-nf-geo'] = request.headers.get('x-nf-geo');
+  //
+  // res.headers.set('x-nf-geo', request.headers.get('x-nf-geo'));
+  //
+  // return res;
 };
