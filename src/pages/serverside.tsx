@@ -1,41 +1,20 @@
-import React from 'react';
+import axios from 'axios';
 import type { GetServerSideProps } from 'next';
-import axios, { AxiosResponse } from 'axios';
+import React from 'react';
 
-const serverside = ({ min }) => (
+const serverside = ({ location }) => (
   <div>
-    min: {min}
+    location: {JSON.stringify(location)}
     <h1>ServerSide</h1>
   </div>
 );
 
 export default serverside;
 
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  // res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=59');
-
-  // const min = await new Promise((resolve) => {
-  // setTimeout(() => {
-  // resolve(new Date().getMinutes());
-  // }, 1000);
-  // });
-  const arr = new Array(1).fill(null);
-
-  const result = [] as Promise<AxiosResponse>[];
-
-  arr.forEach(async () => {
-    const image = axios.get(
-      'https://images.pexels.com/photos/11254131/pexels-photo-11254131.jpeg?cs=srgb&dl=pexels-summer-rune-11254131.jpg&fm=jpg&w=900&h=800'
-    );
-
-    result.push(image);
-  });
-
-  const largeImageArr = await Promise.all(result).then((values) =>
-    values.map((el) => JSON.stringify(el.data))
-  );
+export const getServerSideProps: GetServerSideProps = async () => {
+  const location = await axios.get('https://kind-johnson-e58017.netlify.app/geolocation');
 
   return {
-    props: { largeImageArr }, // will be passed to the page component as props
+    props: { location: location.data || null }, // will be passed to the page component as props
   };
 };
