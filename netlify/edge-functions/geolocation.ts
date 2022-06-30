@@ -14,19 +14,8 @@ interface Context {
   next: () => Promise<any>;
 }
 
-export default async (request: Request, context: Context) => {
-  const geo = request.headers.get('x-nf-geo');
-
-  const res: Response = await context.next();
-  if (geo) {
-    res.headers.set('x-nf-geo', geo);
-  }
-
-  request.headers.set('X-Your-Custom-Header', 'Your custom header value');
-  res.headers.set('X-Your-Custom-Header', 'Your custom header value');
-
-  return context.json({
+export default async (request: Request, context: Context) =>
+  context.json({
     geo: context.geo,
     header: request.headers.get('x-nf-geo'),
   });
-};
