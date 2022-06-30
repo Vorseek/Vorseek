@@ -12,7 +12,7 @@ const nextConfig = {
       headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
     },
     {
-      source: '/serverside',
+      source: '/index',
       headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
     },
   ],

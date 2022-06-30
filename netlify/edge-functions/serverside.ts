@@ -14,6 +14,10 @@ interface Context {
   next: () => Promise<any>;
 }
 
-export default async (request: Request) => {
+export default async (request: Request, context: Context) => {
   const geo = request.headers.get('x-nf-geo');
+
+  const res = await context.next();
+
+  return new Response(res, { headers: { 'my-header': 'value' } });
 };

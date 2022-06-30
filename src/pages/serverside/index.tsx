@@ -1,7 +1,7 @@
 import type { GetServerSideProps } from 'next';
 import React from 'react';
 
-const serverside = ({ location, headers, ip }) => {
+const index = ({ location, headers, ip }) => {
   console.log({ headers });
 
   return (
@@ -13,7 +13,7 @@ const serverside = ({ location, headers, ip }) => {
   );
 };
 
-export default serverside;
+export default index;
 
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const { headers } = req as any;
