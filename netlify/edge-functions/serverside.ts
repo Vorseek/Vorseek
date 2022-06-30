@@ -14,10 +14,9 @@ interface Context {
   next: () => Promise<any>;
 }
 
-export default async (request: Request, context: Context) => {
-  const geo = request.headers.get('x-nf-geo');
-
-  const res = await context.next();
-
-  return new Response(res.body, { headers: { 'my-header': 'value' } });
+export default async (request: Request, context: Context | any) => {
+  context.cookies.set({
+    name: 'country',
+    value: context.geo?.country?.code || 'unknown',
+  });
 };
