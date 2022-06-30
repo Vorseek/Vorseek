@@ -1,9 +1,8 @@
-import axios from 'axios';
 import type { GetServerSideProps } from 'next';
 import React from 'react';
 
-const serverside = ({ location, headers, ip, headersRes }) => {
-  console.log({ headers, headersRes });
+const serverside = ({ location, headers, ip }) => {
+  console.log({ headers });
 
   return (
     <div>
@@ -16,21 +15,18 @@ const serverside = ({ location, headers, ip, headersRes }) => {
 
 export default serverside;
 
-export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const { headers } = req;
-  const headersRes = res.getHeaders();
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+  const { headers } = req as any;
 
   const forwarded = headers['x-forwarded-for'] as string | undefined;
 
   const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress;
 
-  const location = await axios.get('https://kind-johnson-e58017.netlify.app/geolocation', {
-    headers: {
-      'x-forwarded-for': ip,
-    },
-  });
+  const location = await fetch('https://kind-johnson-e58017.netlify.app/geolocation', {
+    headers: { 'X-Real-Ip': ip },
+  }).then((value) => value.json());
 
   return {
-    props: { location: location.data || null, headers, ip, headersRes }, // will be passed to the page component as props
+    props: { location: location || null, headers }, // will be passed to the page component as props
   };
 };
