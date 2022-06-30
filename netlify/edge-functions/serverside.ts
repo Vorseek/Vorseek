@@ -19,5 +19,5 @@ export default async (request: Request, context: Context) => {
 
   const res = await context.next();
 
-  return new Response(res, { headers: { 'my-header': 'value' } });
+  return new Response(res.body, { headers: { 'my-header': 'value' } });
 };
