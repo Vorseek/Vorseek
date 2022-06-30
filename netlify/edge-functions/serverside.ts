@@ -20,5 +20,5 @@ export default async (request: Request, context: Context | any) => {
     value: context.geo?.country?.code || 'unknown',
   });
 
-  request.headers.set('X-Your-Custom-Header', 'Your custom header value');
+  request.headers.set('X-Your-Custom-Header', context.geo?.country?.code || 'unknown');
 };
