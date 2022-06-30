@@ -19,4 +19,8 @@ export default async (request: Request, context: Context | any) => {
     name: 'country',
     value: context.geo?.country?.code || 'unknown',
   });
+
+  request.headers.set('X-Your-Custom-Header', 'Your custom header value');
+
+  return context.rewrite('/serverside');
 };
