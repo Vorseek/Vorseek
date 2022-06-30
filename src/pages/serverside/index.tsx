@@ -6,6 +6,7 @@ const index = ({ location, headers, ip, cookies, resHeaders }) => {
 
   return (
     <div>
+      Current country: {headers?.['country-user']}
       location: {JSON.stringify(location)}
       <h1>ServerSide</h1>
       {ip}
