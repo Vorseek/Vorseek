@@ -19,7 +19,7 @@ export default async (request: Request, context: Context) => {
 
   const res: Response = await context.next();
   if (geo) {
-    res.headers.set('x-nf-geo', request.headers.get('x-nf-geo'));
+    res.headers.set('x-nf-geo', geo);
   }
 
   return res;
