@@ -6,8 +6,8 @@ path = "/geolocation"
 function = "geolocation"
 
 [[edge_functions]]
-path = "/index"
-function = "index"
+path = "/serverside"
+function = "serverside"
 
 [build.environment]
-NEXT_USE_NETLIFY_EDGE = "true"
+#NEXT_USE_NETLIFY_EDGE = "true"
