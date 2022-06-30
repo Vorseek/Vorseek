@@ -2,8 +2,8 @@ import axios from 'axios';
 import type { GetServerSideProps } from 'next';
 import React from 'react';
 
-const serverside = ({ location, headers, ip }) => {
-  console.log(headers);
+const serverside = ({ location, headers, ip, headersRes }) => {
+  console.log({ headers, headersRes });
 
   return (
     <div>
@@ -16,8 +16,9 @@ const serverside = ({ location, headers, ip }) => {
 
 export default serverside;
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const { headers } = req;
+  const headersRes = res.getHeaders();
 
   const forwarded = headers['x-forwarded-for'] as string | undefined;
 
@@ -30,6 +31,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   });
 
   return {
-    props: { location: location.data || null, headers, ip }, // will be passed to the page component as props
+    props: { location: location.data || null, headers, ip, headersRes }, // will be passed to the page component as props
   };
 };
