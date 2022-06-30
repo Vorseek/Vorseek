@@ -14,8 +14,16 @@ export default serverside;
 export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const { headers } = req;
 
+  const forwarded = headers['x-forwarded-for'] as string | undefined;
+
+  const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress;
+
   const location = await axios.get('https://kind-johnson-e58017.netlify.app/geolocation', {
-    headers: headers as Record<string, any>,
+    headers: {
+      // 'accept-language': headers['accept-language'],
+      // 'x-forwarded-for': headers['x-forwarded-for'],
+      'x-forwarded-for': ip,
+    },
   });
 
   return {
