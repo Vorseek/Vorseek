@@ -21,6 +21,4 @@ export default async (request: Request, context: Context | any) => {
   });
 
   request.headers.set('X-Your-Custom-Header', 'Your custom header value');
-
-  return context.rewrite('/serverside');
 };
