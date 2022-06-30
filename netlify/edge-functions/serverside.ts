@@ -14,11 +14,6 @@ interface Context {
   next: () => Promise<any>;
 }
 
-export default async (request: Request, context: Context | any) => {
-  context.cookies.set({
-    name: 'country',
-    value: context.geo?.country?.code || 'unknown',
-  });
-
-  request.headers.set('X-Your-Custom-Header', context.geo?.country?.code || 'unknown');
+export default async (request: Request, context: Context) => {
+  request.headers.set('Country-user', context.geo?.country?.code || 'unknown');
 };
