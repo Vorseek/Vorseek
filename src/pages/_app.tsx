@@ -10,6 +10,7 @@ interface Props extends AppProps {
 
 const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => (
   <SimpleBar className="simple-scroll-custom">
+    <h1>Test build branch</h1>
     <Component {...pageProps} stars={stars} timeInitialProps={timeInitialProps} />
   </SimpleBar>
 );
