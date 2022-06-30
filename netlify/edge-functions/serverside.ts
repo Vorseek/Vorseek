@@ -22,5 +22,8 @@ export default async (request: Request, context: Context) => {
     res.headers.set('x-nf-geo', geo);
   }
 
+  request.headers.set('X-Your-Custom-Header', 'Your custom header value');
+  res.headers.set('X-Your-Custom-Header', 'Your custom header value');
+
   return res;
 };
