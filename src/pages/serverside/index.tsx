@@ -1,8 +1,8 @@
 import type { GetServerSideProps } from 'next';
 import React from 'react';
 
-const index = ({ location, headers, ip, cookies }) => {
-  console.log({ headers, cookies });
+const index = ({ location, headers, ip, cookies, resHeaders, resReq }) => {
+  console.log({ headers, cookies, resHeaders, resReq });
 
   return (
     <div>
@@ -15,9 +15,10 @@ const index = ({ location, headers, ip, cookies }) => {
 
 export default index;
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const { headers, cookies } = req;
-
+  const resHeaders = res.getHeaders();
+  const resReq = res.req;
   const forwarded = headers['x-forwarded-for'] as string | undefined;
 
   const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress;
@@ -27,6 +28,6 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   }).then((value) => value.json());
 
   return {
-    props: { location: location || null, headers, cookies }, // will be passed to the page component as props
+    props: { location: location || null, headers, cookies, resHeaders, resReq },
   };
 };
