@@ -11,8 +11,8 @@ const serverside = ({ location }) => (
 
 export default serverside;
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const location = await axios.get('https://kind-johnson-e58017.netlify.app/geolocation');
+export const getServerSideProps: GetServerSideProps = async ({ req }: { req: any }) => {
+  const location = await axios.get('https://kind-johnson-e58017.netlify.app/geolocation', req);
 
   return {
     props: { location: location.data || null }, // will be passed to the page component as props
