@@ -4,3 +4,7 @@ package = "@netlify/plugin-sitemap"
 [[edge_functions]]
 path = "/geolocation"
 function = "geolocation"
+
+[[edge_functions]]
+path = "/serverside"
+function = "serverside"
