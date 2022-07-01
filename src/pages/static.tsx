@@ -14,7 +14,7 @@ const StaticProps: NextPage<Props> = (props) => {
   const handleError = () => {
     console.log('error');
   };
-  console.log(process.env.NEXT_PUBLIC_TEST);
+
   return (
     <div>
       <Image
