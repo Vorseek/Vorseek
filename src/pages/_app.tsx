@@ -10,7 +10,6 @@ interface Props extends AppProps {
 
 const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => (
   <SimpleBar className="simple-scroll-custom">
-    <h1>Test build branch</h1>
     <Component {...pageProps} stars={stars} timeInitialProps={timeInitialProps} />
   </SimpleBar>
 );
@@ -20,7 +19,7 @@ MyApp.getInitialProps = async () => {
   const res = await fetch('https://api.github.com/repos/vercel/next.js');
   const json = await res.json();
 
-  const timeInitialProps = `Initial => _app
+  const timeInitialProps = `Initial => _app 
   date: ${new Date().getDate()} 
   hours: ${new Date().getHours()} 
   minutes: ${new Date().getMinutes()} 
