@@ -23,7 +23,9 @@ const StaticProps: NextPage<Props> = (props) => {
         height={500}
         onError={handleError}
       />
+
       <p>Static build</p>
+
       {res?.split('\n').map((text) => (
         <p key={text}>{text}</p>
       ))}
