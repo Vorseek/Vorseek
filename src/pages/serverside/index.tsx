@@ -23,9 +23,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   const ip = forwarded ? forwarded.split(/, /)[0] : req.connection.remoteAddress;
 
-  const location = await fetch('https://kind-johnson-e58017.netlify.app/geolocation', {
+  const location = await fetch('https://main--vorseek.netlify.app/geolocation', {
     headers: { 'x-real-ip': '54.93.50.54' || ip, 'x-forwarded-for': '54.93.50.54' },
-  }).then((value) => value.json());
+  })
+    .then((value) => value.json())
+    .catch(() => null);
 
   return {
     props: {
