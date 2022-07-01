@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { NextPage } from 'next';
-import React from 'react';
 import Image from 'next/image';
+import React from 'react';
 
 interface Props {
   res: string;
@@ -14,7 +14,7 @@ const StaticProps: NextPage<Props> = (props) => {
   const handleError = () => {
     console.log('error');
   };
-
+  console.log(process.env.NEXT_PUBLIC_TEST);
   return (
     <div>
       <Image

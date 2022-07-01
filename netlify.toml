@@ -11,3 +11,4 @@ function = "serverside"
 
 [build.environment]
 #NEXT_USE_NETLIFY_EDGE = "true"
+NEXT_PUBLIC_TEST = "NEXT_PUBLIC_TEST"
