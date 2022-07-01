@@ -1,5 +1,5 @@
 {
-  "name": "vorseek_mvp",
+  "name": "vorseek",
   "private": true,
   "scripts": {
     "dev": "next dev",
