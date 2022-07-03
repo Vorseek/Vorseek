@@ -40,7 +40,7 @@ export async function getStaticProps() {
   const res = await new Promise((resolve) => {
     setTimeout(() => {
       resolve(
-        `StaticProps build
+        `StaticProps build 
           date: ${new Date().getDate()}
           hours: ${new Date().getHours()}
           minutes: ${new Date().getMinutes()} 
