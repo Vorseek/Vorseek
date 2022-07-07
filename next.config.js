@@ -58,6 +58,7 @@ const nextConfig = {
   images: {
     domains: ['i.ytimg.com'],
   },
+  productionBrowserSourceMaps: true,
 };
 
 module.exports = nextConfig;

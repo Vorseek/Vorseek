@@ -10,6 +10,15 @@ interface Props extends AppProps {
 
 const MyApp = ({ Component, pageProps, stars, timeInitialProps }: Props) => (
   <SimpleBar className="simple-scroll-custom">
+    <button
+      type="button"
+      onClick={() => {
+        // eslint-disable-next-line no-debugger
+        debugger;
+      }}
+    >
+      click debugg
+    </button>
     <Component {...pageProps} stars={stars} timeInitialProps={timeInitialProps} />
   </SimpleBar>
 );
