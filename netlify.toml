@@ -15,3 +15,4 @@ NEXT_PUBLIC_TEST = "NEXT_PUBLIC_TEST"
 
 [functions]
   ignored_node_modules = ["node_modules/geoip-lite/data/geoip-city.dat"]
+  included_files = ["!node_modules/geoip-lite/data/geoip-city.dat"]
