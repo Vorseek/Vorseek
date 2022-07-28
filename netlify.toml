@@ -12,3 +12,6 @@ function = "serverside"
 [build.environment]
 #NEXT_USE_NETLIFY_EDGE = "true"
 NEXT_PUBLIC_TEST = "NEXT_PUBLIC_TEST"
+
+[functions]
+  ignored_node_modules = ["node_modules/geoip-lite/data/geoip-city.dat"]
