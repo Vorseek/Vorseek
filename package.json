@@ -18,6 +18,7 @@
     "axios": "^0.26.1",
     "classnames": "^2.3.1",
     "drei": "2.2.21",
+    "geoip-lite": "^1.4.5",
     "next": "^12.1.6",
     "postprocessing": "^6.23.5",
     "react": "17.0.2",
@@ -25,6 +26,7 @@
     "react-scripts": "4.0.3",
     "react-three-fiber": "6.0.13",
     "recoil": "0.0.10",
+    "request-ip": "^3.3.0",
     "simplebar": "^5.3.6",
     "simplebar-react": "^2.3.6",
     "three": "0.135.0"
