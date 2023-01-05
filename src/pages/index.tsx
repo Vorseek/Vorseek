@@ -27,6 +27,8 @@ const Home: NextPage = () => {
         <title>Vorseek</title>
         <meta name="description" content="Vorseek" />
         <link rel="icon" href="/favicon.ico" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" />
       </Head>
 
       <Header />
